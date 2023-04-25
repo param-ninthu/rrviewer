@@ -8,10 +8,11 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document(collection = "User")
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class User {
     @Id
     protected ObjectId id;
@@ -20,4 +21,27 @@ public class User {
     protected boolean status;
     protected boolean isActive;
     protected String salt;
+    protected UserProfile userProfile;
+
+
+    public User() {
+        this.userProfile = new UserProfile();
+
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
 }
